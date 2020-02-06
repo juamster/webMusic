@@ -9,7 +9,7 @@ export default class Song {
     this.preview = data.previewUrl || data.preview;
     this._id = data.trackId || data._id;
   }
-
+  // TODO: make this a cool template
   get Template() {
     return `
 
