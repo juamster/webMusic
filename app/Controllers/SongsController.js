@@ -20,12 +20,13 @@ function _drawSongCard() {
   document.getElementById("song-card").innerHTML = store.state.activeSong.songCardTemplate;
 
 }
-/**Draws the Users saved songs to the page */
+
+
 function _drawPlaylist() {
   let template = "";
 
   store.state.mySongs.forEach(song => {
-    template += song.newPlayListTemplate;
+    template += song.PlayListTemplate;
     console.log("we have songs in our playlist");
   });
   document.getElementById("playlist").innerHTML = template;
