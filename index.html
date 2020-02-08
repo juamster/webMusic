@@ -60,15 +60,13 @@
   <header class="row">
     <div class="col-12 bannerStyle">
       <h1 class="text-center">Music Now</h1>
-
     </div>
   </header>
 
 
-
   <main class="row">
     <div class="col-lg-4 pewter-blue">
-      <div class="">
+      <div>
         <form onsubmit="app.songsController.search(event)">
           <input type="text" class="form-control" name="query" placeholder="Search For Music" />
           <button class="btn btn-success mt-1 form-control" type="submit">
@@ -80,18 +78,18 @@
 
       <h3 class="text-center ">Search Results</h3>
       <div id="songs" class="col-12 m-0">
-        <!-- template to generate -->
+        <!-- template for Search Results -->
       </div>
     </div>
 
-    <div class="col-lg-4" style="background-color:pink ;">
+    <div class="col-lg-4 playlist-container">
       <h3 class="text-center">See if this sounds good!</h3>
       <div class="col-12 m-0" id="song-card">
         <!-- template for playlist -->
       </div>
     </div>
 
-    <div class="col-lg-4" style="background-color:lightgray">
+    <div class="col-lg-4">
       <button class="btn btn-outline-danger" onclick="app.songsController.deleteAllPlaylist()">Delete Playlist</button>
       <h3 class="text-center">Playlist</h3>
       <div class="col-12 m-0" id="playlist">

@@ -86,17 +86,12 @@ class SongsService {
     // console.log("New Song Added with id: " + aSong._id);
   }
 
+
   /**
-   * Sends a delete request to the sandbox to remove a song from the playlist
-   * Afterwords it will update the store to reflect saved info
-   * @param {string} id
+   * This will remove a song from the server and also from the store
+   * @param {*} id 
    */
-  async removeSong(title) {
-    //TODO Send the id to be deleted from the server then update the store
-    // gets the title of this song and set's id to that song's id
-    let song = store.state.mySongs.find(p => p.title == title);
-    console.log("removing this song ", song._id)
-    let id = song._id;
+  async removeSong(id) {
 
     await fetch(_sandBoxUrl + id, {
       method: "DELETE"

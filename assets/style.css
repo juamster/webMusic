@@ -19,7 +19,6 @@
 body {
   background-color: var(--bg);
   font-family: var(--fontUbuntu);
-  
 }
 
 h1 {
@@ -32,7 +31,7 @@ h1 {
   background-color : #EAD2AC;
 }
 
-.pewter-blue  {
+.playlist-container {
   background-color: #9CAFB7;
 };
 

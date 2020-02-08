@@ -6,10 +6,10 @@ import SongService from "../Services/SongsService.js";
 function _drawResults() {
 
   let template = "";
-  console.log("the size of the song list is: " + store.state.songs.length)
+  // console.log("the size of the song list is: " + store.state.songs.length)
   store.state.songs.forEach(song => {
-    template += song.newSearchTemplate;
-    console.log("we have songs in the store");
+    template += song.SearchTemplate;
+    // console.log("we have songs in the store");
   });
   document.getElementById("songs").innerHTML = template;
 }
@@ -25,7 +25,7 @@ function _drawPlaylist() {
   let template = "";
 
   store.state.mySongs.forEach(song => {
-    template += song.PlayListTemplate;
+    template += song.newPlayListTemplate;
     console.log("we have songs in our playlist");
   });
   document.getElementById("playlist").innerHTML = template;
@@ -40,11 +40,14 @@ export default class SongsController {
     this.getMySongs()
 
   }
-
+  /**
+   * Just a little private function that can remove all of the playlist at one 
+   * time.  
+   */
   deleteAllPlaylist() {
     console.log("deleting all songs");
     store.state.mySongs.forEach(song => {
-      this.removeSong(song.title);
+      this.removeSong(song._id);
     });
     _drawPlaylist();
   }
@@ -84,11 +87,13 @@ export default class SongsController {
 
   /**
    * Takes in a song title to be removed from the users playlist and sends it to the server
-   * @param {string} title
+   * @param {string} id
    */
-  async removeSong(title) {
+  async removeSong(id) {
+
     try {
-      await SongService.removeSong(title);
+      await SongService.removeSong(id);
+      _drawPlaylist();
     } catch (error) {
       console.error(error);
     }

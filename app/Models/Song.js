@@ -13,38 +13,50 @@ export default class Song {
     this._id = data.trackId || data._id;
   }
   // TODO: make this a cool template
+
+
   get SearchTemplate() {
     return `
-        <div>
-          <div onclick="app.songsController.getSong('${this._id}')">
-            <h5>${this.title}</h5>
+      <div class="card-body container-fluid text-center">
+        <div class="card shadow-none" onclick="app.songsController.getSong('${this._id}')"  >
+          <div class="row">
+            <div class="col">
+                <img src="${this.albumArt}" class="card-img-top" width="10%">
+            </div>
+          
+            <div class="col">
+                <h5 class="card-title">${this.title}</h5>
+                <hr>
+                <h7 class="card-text">${this.album}</h7>
+            </div>
           </div>
-        </div>
-
-        `;
-  }
-
-  get newSearchTemplate() {
-    return `
-      <div class="card shadow" onclick="app.songsController.getSong('${this._id}')" style="width:50%" >
-        <div class="card-body container-fluid text-center">
-            <img src="${this.albumArt}" class="card-img-top" width="10%">
-            <h5 class="card-title">${this.title}</h5>
-            <h6 class="card-text">${this.album}</h6>
-        </div>
-       
+        </div>  
       </div>
     `;
   }
 
   get PlayListTemplate() {
     return `
-        <div>
-            <h5>${this.title}</h5>
-        </div>
+      <div class="card">
+        <div class="card-body border container-fluid text-center">
+          <div class="row">
+            <div class="col">
+                <h5 class="card-title">${this.title}</h5>
+                <hr>
+                <h7 class="card-subtitle mb-2 text-muted">${this.album}</h7>
+            </div>
 
-        `;
+            <div class="col">
+              <i class="far fa-trash-alt fa-2x" onclick="app.songsController.removeSong('${this._id}')"></i>
+            </div>  
+
+          </div>
+        </div>  
+      </div>
+    `;
   }
+
+
 
   get songCardTemplate() {
     let button =
