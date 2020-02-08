@@ -3,7 +3,7 @@ import store from "../store.js";
 
 // @ts-ignore
 //TODO Change YOURNAME to your actual name
-let _sandBoxUrl = "//bcw-sandbox.herokuapp.com/api/YOURNAME/songs";
+let _sandBoxUrl = "//bcw-sandbox.herokuapp.com/api/Judy/songs/";
 
 class SongsService {
   constructor() {
@@ -20,26 +20,70 @@ class SongsService {
     let url = "https://itunes.apple.com/search?&term=" + query;
     let response = await fetch(url);
     let data = await response.json();
-    console.log("THE SONG DATA", data.results);
+
+    // I added this... how else will we put the data in the store
+
+    // Reset the Song Search List
+    store.resetSearchList();
+    let aSong;
+    data.results.forEach(element => {
+      aSong = new Song(element);
+      // console.log("this is a piece of data" + aSong.album);
+      store.state.songs.push(aSong);
+    });
   }
 
+  /**
+   * This is called by the controller to get a song that the user
+   * has clicked on from the search list.  At this point the id has
+   * not been changed.
+   * @param {*} id 
+   */
+  async getSong(id) {
+
+    let song = store.state.songs.find(p => p._id == id);
+    // console.log("Active song is: ", song)
+    // console.log("GetSong - Search id: " + id);
+    store.state.activeSong = song
+  }
   /**
    * Retrieves the saved list of songs from the sandbox
    */
   async getMySongs() {
     let response = await fetch(_sandBoxUrl);
     let data = await response.json();
-    console.log("MY SONGS", data.data);
+    store.state.mySongs = data.data.map(songData => new Song(songData));
+
+    // console.log("MY SONGS", data.data);
+    // console.log("My Song List Length:", store.state.mySongs.length)
   }
 
   /**
-   * Takes in a song id and sends it from the search results to the sandbox to be saved.
+   * Adds the active song to the users list
    * Afterwords it will update the store to reflect saved info
-   * @param {string} id
+   * 
    */
-  addSong(id) {
-    //TODO you only have an id, you will need to find it in the store before you can post it
-    //TODO After posting it what should you do?
+  async addSong() {
+
+    let activeSong = store.state.activeSong;
+    let song = store.state.mySongs.find(p => p.title == activeSong.title);
+
+    if (song) {
+      throw new Error("you already have this song");
+    }
+
+    let response = await fetch(_sandBoxUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(activeSong)
+    });
+    let data = await response.json();
+    let aSong = new Song(data.data);
+    store.state.mySongs.push(aSong);
+    store.state.activeSongs = aSong;
+    // console.log("New Song Added with id: " + aSong._id);
   }
 
   /**
@@ -47,8 +91,23 @@ class SongsService {
    * Afterwords it will update the store to reflect saved info
    * @param {string} id
    */
-  removeSong(id) {
+  async removeSong(title) {
     //TODO Send the id to be deleted from the server then update the store
+    // gets the title of this song and set's id to that song's id
+    let song = store.state.mySongs.find(p => p.title == title);
+    console.log("removing this song ", song._id)
+    let id = song._id;
+
+    await fetch(_sandBoxUrl + id, {
+      method: "DELETE"
+    });
+    let i = store.state.mySongs.findIndex(p => p._id == id);
+    // let i = store.state.mySongs.findIndex(p => p.title == title);
+    if (i != -1) {
+      store.state.mySongs.splice(i, 1);
+      console.log("removing song from MyList at " + i);
+    }
+    console.log("myList length: " + store.state.mySongs.length);
   }
 }
 

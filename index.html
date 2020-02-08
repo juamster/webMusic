@@ -5,40 +5,102 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
   <link rel="stylesheet" href="assets/style.css" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/7209a4957e.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
   <title>Music is Fun</title>
 </head>
 
 <body class="container-fluid">
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="">iTunes Searcher</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            Contact
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            My PlayList
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            All Songs
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <header class="row">
     <div class="col-12 bannerStyle">
-      <p>Music is Fun</p>
-    </div>
-    <div class="offset-8 col-4">
-      <form onsubmit="app.songsController.search(event)">
-        <input type="text" class="form-control" name="query" placeholder="Search For Music" />
-        <button class="btn btn-success mt-1 form-control" type="submit">
-          Search
-        </button>
-      </form>
+      <h1 class="text-center">Music Now</h1>
+
     </div>
   </header>
 
+
+
   <main class="row">
-    <div class="col-6">
-      <h3 class="text-center">Search Results</h3>
+    <div class="col-lg-4 pewter-blue">
+      <div class="">
+        <form onsubmit="app.songsController.search(event)">
+          <input type="text" class="form-control" name="query" placeholder="Search For Music" />
+          <button class="btn btn-success mt-1 form-control" type="submit">
+            <i class="fas fa-search"></i>
+            Search
+          </button>
+        </form>
+      </div>
+
+      <h3 class="text-center ">Search Results</h3>
       <div id="songs" class="col-12 m-0">
         <!-- template to generate -->
       </div>
     </div>
-    <div class="col-6">
+
+    <div class="col-lg-4" style="background-color:pink ;">
+      <h3 class="text-center">See if this sounds good!</h3>
+      <div class="col-12 m-0" id="song-card">
+        <!-- template for playlist -->
+      </div>
+    </div>
+
+    <div class="col-lg-4" style="background-color:lightgray">
+      <button class="btn btn-outline-danger" onclick="app.songsController.deleteAllPlaylist()">Delete Playlist</button>
       <h3 class="text-center">Playlist</h3>
       <div class="col-12 m-0" id="playlist">
         <!-- template for playlist -->
       </div>
     </div>
   </main>
+
+
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"

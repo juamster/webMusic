@@ -1,0 +1,41 @@
+:root{
+  --primary: #4281A4;
+  --primary-lighten: #9CAFB7;
+  --primary-darken: #6f8639;
+  --bg: #EAD2AC;
+  --tulip: #FE938C;
+  --shadow: 2px 0 5px rgba(49, 49, 49, 0.5);
+  --corners: 0;
+  --text-color: #3a3838;
+  --dark: #3a3838;
+  --dark-lighten: #504c4c;
+  --light: #fdfdfd;
+  --danger: #ff3737;
+  --fontUbuntu: 'Ubuntu', sans-serif;
+  --fontMon: 'Montserrat', sans-serif;
+}
+
+
+body {
+  background-color: var(--bg);
+  font-family: var(--fontUbuntu);
+  
+}
+
+h1 {
+  background-color: var(--tulip);
+  font-family: var(--fontMon);
+  color : var(--dark);
+}
+
+.search-container {
+  background-color : #EAD2AC;
+}
+
+.pewter-blue  {
+  background-color: #9CAFB7;
+};
+
+.tulip {
+  background-color: FE938C
+}
