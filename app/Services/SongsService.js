@@ -69,6 +69,7 @@ class SongsService {
     let song = store.state.mySongs.find(p => p.title == activeSong.title);
 
     if (song) {
+      alert("You have already added this song! pick another");
       throw new Error("you already have this song");
     }
 

@@ -31,6 +31,13 @@
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="">iTunes Searcher</a>
+
+    <form class="form-inline" onsubmit="app.songsController.search(event)">
+      <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search for music" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 form-control" type="submit">Search</button>
+    </form>
+
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -39,7 +46,7 @@
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="#footer">
             Contact
           </a>
         </li>
@@ -50,7 +57,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="">
-            All Songs
+            Search List
           </a>
         </li>
       </ul>
@@ -59,44 +66,42 @@
 
   <header class="row">
     <div class="col-12 bannerStyle">
-      <h1 class="text-center">Music Now</h1>
+      <h1 class="text-center header">Music Now</h1>
     </div>
   </header>
 
 
   <main class="row">
-    <div class="col-lg-4 pewter-blue">
-      <div>
-        <form onsubmit="app.songsController.search(event)">
-          <input type="text" class="form-control" name="query" placeholder="Search For Music" />
-          <button class="btn btn-success mt-1 form-control" type="submit">
-            <i class="fas fa-search"></i>
-            Search
-          </button>
-        </form>
-      </div>
 
+    <div class="col-lg-4 pewter-blue">
       <h3 class="text-center ">Search Results</h3>
       <div id="songs" class="col-12 m-0">
         <!-- template for Search Results -->
       </div>
     </div>
 
-    <div class="col-lg-4 playlist-container">
-      <h3 class="text-center">See if this sounds good!</h3>
-      <div class="col-12 m-0" id="song-card">
-        <!-- template for playlist -->
+    <div class="col-lg-4 playlist">
+      <div class="row">
+        <div class="col-12 m-2 h-75 d-inline-block" id="song-card">
+          <!-- template for active song -->
+        </div>
       </div>
     </div>
 
     <div class="col-lg-4">
-      <button class="btn btn-outline-danger" onclick="app.songsController.deleteAllPlaylist()">Delete Playlist</button>
+      <!-- <button class="btn btn-outline-danger" onclick="app.songsController.deleteAllPlaylist()">Delete Playlist</button> -->
       <h3 class="text-center">Playlist</h3>
       <div class="col-12 m-0" id="playlist">
         <!-- template for playlist -->
       </div>
     </div>
   </main>
+
+  <footer class="row">
+    <div class="col-12 bannerStyle">
+      <h2 class="text-center header">Judy Amster</h2>
+    </div>
+  </footer>
 
 
 
