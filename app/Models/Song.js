@@ -35,19 +35,22 @@ export default class Song {
     `;
   }
 
-
-
   get PlayListTemplate() {
     return `
       <div class="card">
         <div class="card-body container-fluid text-center search-card-body">
           <div class="row">
-            <div class="col-10">
+             
+            <div class="col-2">
+              <i class="fas fa-music" onclick="app.songsController.resetActiveSong('${this._id}')"></i>
+            </div>  
+
+            <div class="col-8">
                 <h7 class="card-title"><em>${this.title}</em></h7>
                 <p class="card-text text-muted">${this.album}</p>
             </div>
             <div class="col-2">
-              <i class="far fa-trash-alt fa-lg trash" onclick="app.songsController.removeSong('${this._id}')"></i>
+              <i class="fas fa-trash-alt fa-lg trash" onclick="app.songsController.removeSong('${this._id}')"></i>
             </div>  
           </div>
         </div>  

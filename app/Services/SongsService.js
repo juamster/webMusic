@@ -44,8 +44,18 @@ class SongsService {
     let song = store.state.songs.find(p => p._id == id);
     // console.log("Active song is: ", song)
     // console.log("GetSong - Search id: " + id);
-    store.state.activeSong = song
+    store.state.activeSong = song;
   }
+
+  async resetActiveSong(id) {
+
+    let song = store.state.mySongs.find(p => p._id == id);
+    // console.log("Active song is: ", song)
+    // console.log("GetSong - Search id: " + id);
+    store.state.activeSong = song;
+  }
+
+
   /**
    * Retrieves the saved list of songs from the sandbox
    */

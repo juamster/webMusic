@@ -18,8 +18,8 @@ function _drawSongCard() {
   console.log("You picked song with id: " + store.state.activeSong._id);
 
   document.getElementById("song-card").innerHTML = store.state.activeSong.songCardTemplate;
-
 }
+
 
 
 function _drawPlaylist() {
@@ -108,6 +108,16 @@ export default class SongsController {
     } catch (error) {
       console.log(error);
     }
-
   }
+
+  async resetActiveSong(id) {
+    try {
+      await SongService.resetActiveSong(id);
+      _drawSongCard();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 }
