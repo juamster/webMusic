@@ -3,7 +3,7 @@ import store from "../store.js";
 
 // @ts-ignore
 //TODO Change YOURNAME to your actual name
-let _sandBoxUrl = "//bcw-sandbox.herokuapp.com/api/Judy/songs/";
+let _sandBoxUrl = "https://bcw-sandbox.herokuapp.com/api/Judy/songs/";
 
 class SongsService {
   constructor() {
