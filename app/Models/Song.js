@@ -65,25 +65,24 @@ export default class Song {
       `;
     return /* html */ `
     <div class="card ">
-      <div class="card-body play-card-body main-info container-fluid text-center" >
-        <div class="row">
+      <div class="card-body play-card-body main-info container-fluid" >   
           <audio controls>
             <source src="${this.preview}" type="audio/mp3">
             Your browser does not support the audio element.
           </audio>
           <img src="${this.albumArt}" class="card-img-top">
-          <h5 class="card-title ml-2 justify-center">${this.title}</h5>
-          <h6 class="card-album mr-2 center" >${this.album}</h6>
-          <p class="card-text">
-            Artist Name: ${this.artist} 
-            Price: ${this.price} 
-          </p>
-        </div> 
+          <h5 class="card-title">${this.title}</h5>
+          <h6 class="card-subtitle" >${this.album}</h6>
+          <br>
+          <div class="card-text">
+              <div>Artist Name: ${this.artist} </div>
+              <div>Buy Now: ${this.price}</div>
+          </div>    
+        </div>
+       
         <div >
           ${button}
         </div>  
-        
-      </div>
     </div>
     `;
   }

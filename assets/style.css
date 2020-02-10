@@ -39,16 +39,20 @@ header {
   font-family: var(--fontUbuntu);
   color : #FF3342;
   line-height: 1.5;
+  justify-content: flex-start;
 }
 
 .search-container {
   background-color :--var(primary-lighten);
   height: 100vh;
   overflow-y: scroll;
-  padding-top: 40x;
+  padding-top: 20px;
 
 }
 
+.now-playing {
+  padding-top: 20px;
+}
 .playlist {
   background-color: var(--primary-lighten);
   overflow-y: scroll;
@@ -94,10 +98,22 @@ header {
 
 .card-text {
   font-size: .8rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .card {
   background-color: var(--light);
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-subtitle {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .trash {
