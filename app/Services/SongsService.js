@@ -42,16 +42,19 @@ class SongsService {
   async getSong(id) {
 
     let song = store.state.songs.find(p => p._id == id);
-    // console.log("Active song is: ", song)
-    // console.log("GetSong - Search id: " + id);
+
     store.state.activeSong = song;
   }
 
+  /**
+   * Resets the active song by searching the id
+   * from the users playlist - mySongs. Used when
+   * the user wants to play a song from their playlist
+   * @param {} id 
+   */
   async resetActiveSong(id) {
 
     let song = store.state.mySongs.find(p => p._id == id);
-    // console.log("Active song is: ", song)
-    // console.log("GetSong - Search id: " + id);
     store.state.activeSong = song;
   }
 

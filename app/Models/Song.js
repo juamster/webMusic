@@ -35,6 +35,9 @@ export default class Song {
     `;
   }
 
+  /**
+   * template for the playlist
+   */
   get PlayListTemplate() {
     return `
       <div class="card">
@@ -59,7 +62,9 @@ export default class Song {
   }
 
 
-
+  /**
+   * Template for the song card
+   */
   get songCardTemplate() {
     let button =
       `<button class="btn btn-danger btn-block text-center" onclick="app.songsController.addSong('${this._id}')">

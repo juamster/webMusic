@@ -6,17 +6,13 @@ import SongService from "../Services/SongsService.js";
 function _drawResults() {
 
   let template = "";
-  // console.log("the size of the song list is: " + store.state.songs.length)
   store.state.songs.forEach(song => {
     template += song.SearchTemplate;
-    // console.log("we have songs in the store");
   });
   document.getElementById("songs").innerHTML = template;
 }
 
 function _drawSongCard() {
-  console.log("You picked song with id: " + store.state.activeSong._id);
-
   document.getElementById("song-card").innerHTML = store.state.activeSong.songCardTemplate;
 }
 
@@ -27,7 +23,6 @@ function _drawPlaylist() {
 
   store.state.mySongs.forEach(song => {
     template += song.PlayListTemplate;
-    console.log("we have songs in our playlist");
   });
   document.getElementById("playlist").innerHTML = template;
 }
@@ -110,6 +105,11 @@ export default class SongsController {
     }
   }
 
+  /**
+   * This function will reset the active song - When user clicks
+   * on a music icon from the playlist, the main card will change
+   * @param {} id 
+   */
   async resetActiveSong(id) {
     try {
       await SongService.resetActiveSong(id);
