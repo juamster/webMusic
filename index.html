@@ -27,58 +27,63 @@
   <title>Music is Fun</title>
 </head>
 
+
 <body class="container-fluid">
+  <header class="mb-5">
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="">iTunes Searcher</a>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="">iTunes Searcher</a>
 
-    <form class="form-inline" onsubmit="app.songsController.search(event)">
-      <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search for music" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0 form-control" type="submit">Search</button>
-    </form>
+      <form class="form-inline" onsubmit="app.songsController.search(event)">
+        <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search for music" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 form-control" type="submit">Search</button>
+      </form>
 
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
 
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#footer">
-            Contact
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">
-            My PlayList
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">
-            Search List
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#foot">
+              Contact
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#play-list">
+              My PlayList
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#search-list">
+              Search List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-  <header class="row">
+  <div class="row main-info mt-3">
     <div class="col-12 bannerStyle">
       <h1 class="text-center header">Music Now</h1>
     </div>
-  </header>
+  </div>
 
 
   <main class="row">
 
-    <div class="col-lg-4 pewter-blue">
-      <h3 class="text-center ">Search Results</h3>
+
+    <div class="col-lg-4 pewter-blue search-container">
+      <h3 class="text-center" id="search-list">Search Results</h3>
       <div id="songs" class="col-12 m-0">
         <!-- template for Search Results -->
       </div>
     </div>
+
 
     <div class="col-lg-4 playlist">
       <div class="row">
@@ -88,16 +93,16 @@
       </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 search-container">
       <!-- <button class="btn btn-outline-danger" onclick="app.songsController.deleteAllPlaylist()">Delete Playlist</button> -->
-      <h3 class="text-center">Playlist</h3>
+      <h3 class="text-center" id="play-list">Playlist</h3>
       <div class="col-12 m-0" id="playlist">
         <!-- template for playlist -->
       </div>
     </div>
   </main>
 
-  <footer class="row">
+  <footer class="row" id="foot">
     <div class="col-12 bannerStyle">
       <h2 class="text-center header">Judy Amster</h2>
     </div>
